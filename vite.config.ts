@@ -1,10 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import dts from 'vite-plugin-dts'
 import { resolve } from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   root: 'example',
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({ rollupTypes: true })
+  ],
   css: {
     preprocessorOptions: {
       less: {
@@ -17,9 +21,10 @@ export default defineConfig({
     },
   },
   build:{
+    outDir: '../dist',
     lib: {
       entry: resolve(__dirname, "src/main.tsx"), // 打包的入口文件
-      formats: ['es' , 'cjs' , 'umd' , 'iife'],
+      formats: ['es'], //, 'cjs' , 'umd' , 'iife'
       name: 'mindMap',
       fileName: (format) => `mindMap.${format}.js` // 打包后的文件名
     },

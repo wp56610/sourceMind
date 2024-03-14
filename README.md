@@ -1,7 +1,7 @@
 ## how to use
 
 ```bash
-npm i mindMap
+npm i source-mind
 ```
 
 ## run dev

@@ -1,8 +1,9 @@
 {
-  "name": "mindmap",
-  "private": true,
-  "version": "0.0.0",
+  "name": "source-mind",
+  "version": "0.0.1",
   "type": "module",
+  "module": "dist/mindMap.es.js",
+  "main": "dist/mindMap.es.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,9 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "lodash": "^4.17.21"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
@@ -31,6 +30,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "sass": "^1.71.1",
     "typescript": "^5.2.2",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.7.3"
   }
 }
