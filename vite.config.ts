@@ -2,12 +2,18 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import dts from 'vite-plugin-dts'
 import { resolve } from "path";
+import { reactScopedCssPlugin } from 'rollup-plugin-react-scoped-css'
 // https://vitejs.dev/config/
 export default defineConfig({
   root: 'example',
   plugins: [
     react(),
-    dts({ rollupTypes: true })
+    dts({ rollupTypes: true }),
+    // TODO  reactScopedCssPlugin ts error, but it's work. 
+    // reactScopedCssPlugin extend rollup.plugin, vitePlugin extend rollup.plugin too, maybe reactScopedCssPlugin should extend vitePlugin
+    reactScopedCssPlugin({
+      styleFileSuffix: ''
+    }),
   ],
   css: {
     preprocessorOptions: {
