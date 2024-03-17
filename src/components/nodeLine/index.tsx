@@ -19,7 +19,7 @@ function NodeLine(props: NodeContainerProps) {
 
   return <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="node-line">
     <path
-    d={linePath} stroke='red' />
+    d={linePath} stroke='red' fill='none' strokeWidth={2}/>
   </svg>
 }
 
