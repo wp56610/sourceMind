@@ -1,4 +1,5 @@
 import { layoutBase } from "../layout/base";
+import organization from "../layout/organization/organization";
 
 class LayoutManager {
   private layoutMap = new Map<string, layoutBase>()
@@ -12,7 +13,8 @@ class LayoutManager {
     }
     return target
   }
-  
 }
 
 export const layoutManager = new LayoutManager();
+
+layoutManager.register('organization', organization)

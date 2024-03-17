@@ -1,5 +1,4 @@
 
-
 export interface TreeNode {
   text: string 
   children: TreeNode[]
@@ -25,6 +24,14 @@ export interface TreeNode {
    * 子树的高度
   */
   layoutHeight: number;
+  /**
+   * 布局类型
+   */
+  type: string;
+  /**
+   * 连线类型, 存在容错
+   */
+  lineType: string;
 }
 
 export interface tree {

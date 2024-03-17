@@ -1,6 +1,8 @@
 import sum from "lodash/sum";
 import { TreeNode } from "../../type/const";
 import { layoutBase } from "../base";
+import organizationStraight from "./line/straight";
+import organizationCircle from "./line/circle";
 
 class Organization extends layoutBase {
   override computeLayout(node: TreeNode) {
@@ -29,4 +31,6 @@ class Organization extends layoutBase {
 }
 
 const organization = new Organization();
+organization.lineManager.register('straight', organizationStraight)
+organization.lineManager.register('circle', organizationCircle)
 export default organization;

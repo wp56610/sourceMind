@@ -1,33 +1,37 @@
 import forEachRight from 'lodash/forEachRight'
 import NodeContainer from './components/nodeContainer'
 import './index.sass'
-import organization from './layout/organization/organization'
+import { layoutManager } from './manager/layoutManager'
 import { expandTree } from './tools/expandTree'
 import { nodeCreator } from './tools/nodeCreator'
-import organizationStraight from './layout/organization/line/straight'
 import NodeLine from './components/nodeLine'
 export default function MindMap(){
-  const root = nodeCreator('根节点')
+  const root = nodeCreator({text: '根节点' })
   const children1 = [
-    nodeCreator('分支主题'),
-    nodeCreator('分支主题'),
-    nodeCreator('分支主题'),
-    nodeCreator('分支主题'),
+    nodeCreator({text: '分支主题' }),
+    nodeCreator({text: '分支主题' }),
+    nodeCreator({text: '分支主题' }),
+    nodeCreator({text: '分支主题' }),
   ]
   root.children.push(...children1)
   const nodeList = expandTree([root])
   forEachRight(nodeList, (item)=>{
-    organization.computeLayout(item)
+    const type = item.type
+    const layout = layoutManager.getLayout(type)
+    layout.computeLayout(item)
   })
   nodeList.forEach(item=>{
-    organization.computePosition(item)
+    const type = item.type
+    const layout = layoutManager.getLayout(type)
+    layout.computePosition(item)
   })
-  console.log(`🚀 ~ MindMap ~ nodeList:`, nodeList)
 
-  const lineList = nodeList.map(item=>
-    organizationStraight(item)
-  ).flat()
-  console.log(`🚀 ~ MindMap ~ lineList:`, lineList)
+  const lineList = nodeList.map(item=>{
+    const {type, lineType } = item
+    const layout = layoutManager.getLayout(type)
+    const computeLine =  layout.lineManager.getLine(lineType)
+    return computeLine(item)
+  }).flat()
 
   
   return  <div className='mind-map-container'>
