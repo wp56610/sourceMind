@@ -1,5 +1,6 @@
 import { layoutBase } from "../layout/base";
 import organization from "../layout/organization/organization";
+import tree from "./tree";
 
 class LayoutManager {
   private layoutMap = new Map<string, layoutBase>()
@@ -18,3 +19,4 @@ class LayoutManager {
 export const layoutManager = new LayoutManager();
 
 layoutManager.register('organization', organization)
+layoutManager.register('tree', tree)
