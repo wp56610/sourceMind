@@ -23,7 +23,7 @@ class Organization extends layoutBase {
     // 原地算法
     node.children.forEach(item=>{
       item.left = subTreeStart
-      item.top = node.contentHeight + this.parentSpacing
+      item.top = node.top + node.contentHeight + this.parentSpacing
       subTreeStart += item.layoutWidth + this.brotherSpacing
     })
     return node;
