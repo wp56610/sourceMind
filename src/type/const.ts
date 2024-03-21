@@ -1,5 +1,32 @@
 
-export interface TreeNode {
+export interface TreeNode extends BaseNode{
+  /**
+   * 包含概要的布局宽度
+   */
+  summaryWidth: number;
+  /**
+   * 包含概要的布局高度
+   */
+  summaryHeight: number;
+  /**
+   * 布局类型
+   */
+  type: string;
+  /**
+   * 连线类型, 存在容错
+   */
+  lineType: string;
+  /**
+   * 概要节点存储
+   */
+  summary: RelationInfo[]
+}
+
+interface BaseNode {
+  /**
+   * 节点唯一标识
+   */
+  nodeId: string
   text: string 
   children: TreeNode[]
   /**
@@ -24,25 +51,13 @@ export interface TreeNode {
    * 子树的高度
   */
   layoutHeight: number;
-  /**
-   * 布局类型
-   */
-  type: string;
-  /**
-   * 连线类型, 存在容错
-   */
-  lineType: string;
-}
-
-export interface tree {
-  root: TreeNode,
-  lineType: LineType
 }
 
 
-export enum LineType  {
-  straight='straight'
+export interface RelationInfo extends BaseNode {
+  ids: string[],
 }
+
 
 
 export interface IRange {
