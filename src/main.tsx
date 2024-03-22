@@ -1,20 +1,13 @@
 import forEachRight from 'lodash/forEachRight'
 import NodeContainer from './components/nodeContainer'
 import './index.sass'
-import { layoutManager } from './manager/layoutManager'
+import { layoutManager } from './layout/layoutManager'
 import { expandTree } from './tools/expandTree'
-import { nodeCreator } from './tools/nodeCreator'
 import NodeLine from './components/nodeLine'
-export default function MindMap(){
-  const root = nodeCreator({text: '根节点' })
-  const children1 = [
-    nodeCreator({text: '分支主题' }),
-    nodeCreator({text: '分支主题' }),
-    nodeCreator({text: '分支主题' }),
-    nodeCreator({text: '分支主题' }),
-  ]
-  root.children.push(...children1)
-  const nodeList = expandTree([root])
+import { TreeNode } from './type/const'
+import { forwardRef, Ref, useImperativeHandle } from 'react'
+const MindMap = forwardRef((prop: {root:TreeNode}, ref: Ref<unknown> | undefined)=>{
+  const nodeList = expandTree([prop.root])
   forEachRight(nodeList, (item)=>{
     const type = item.type
     const layout = layoutManager.getLayout(type)
@@ -25,14 +18,18 @@ export default function MindMap(){
     const layout = layoutManager.getLayout(type)
     layout.computePosition(item)
   })
-
+  
   const lineList = nodeList.map(item=>{
     const {type, lineType } = item
     const layout = layoutManager.getLayout(type)
     const computeLine =  layout.lineManager.getLine(lineType)
     return computeLine(item)
   }).flat()
-
+  // 暴露实例方法
+  useImperativeHandle(ref, () => {
+    return {
+    };
+  }, []);
   
   return  <div className='mind-map-container'>
     {
@@ -46,4 +43,6 @@ export default function MindMap(){
     )
   }
   </div>
-}
+})
+
+export default MindMap
