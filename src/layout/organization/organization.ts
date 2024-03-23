@@ -5,9 +5,10 @@ import organizationStraight from "./line/straight";
 import organizationCircle from "./line/circle";
 
 class Organization extends layoutBase {
+  override brotherSpacing = 4;
   override computeLayout(node: TreeNode) {
     const spacingWidth = (node.children.length - 1) * this.brotherSpacing;
-    const contentWidth = sum(node.children.map((item) => item.layoutWidth));
+    const contentWidth = sum(node.children.map((item) => Math.max(item.layoutWidth, item.summaryWidth)));
     const spacingHeight = node.children.length ? this.parentSpacing : 0;
     node.layoutWidth = Math.max(spacingWidth + contentWidth, node.contentWidth);
     node.layoutHeight =
@@ -20,12 +21,25 @@ class Organization extends layoutBase {
   override computePosition(node: TreeNode) {
     // 当前节点在当前子树当中总是居中的
     let subTreeStart = node.left - (node.layoutWidth - node.contentWidth)/2
+    const map = new Map<string, TreeNode>()
     // 原地算法
     node.children.forEach(item=>{
-      item.left = subTreeStart
+      item.left = subTreeStart + item.layoutWidth/2 - item.contentWidth/2
       item.top = node.top + node.contentHeight + this.parentSpacing
       subTreeStart += item.layoutWidth + this.brotherSpacing
+      map.set(item.nodeId, item)
     })
+    // TODO 此时反向计算一次父节点的位置
+    const len = node.children.length
+    if(len>=2){
+      const firstChildrenCenter = node.children[0].left + (node.children[0].contentWidth>>1)
+      const lastChildCenter = node.children[len -1 ].left + (node.children[len - 1].contentWidth>>1)
+      node.left = (firstChildrenCenter + lastChildCenter - node.contentWidth) >> 1
+    }
+    if(len === 1 || len === 0){
+      // 不做处理
+    }
+
     return node;
   }
 }
