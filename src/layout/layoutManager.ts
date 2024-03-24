@@ -1,5 +1,6 @@
 import { layoutBase } from "../layout/base";
-import organization from "../layout/organization/organization";
+// import organization from "../layout/organization/organization";
+import organizationXMind from "./organization/organizationXmind";
 import tree from "./tree";
 
 class LayoutManager {
@@ -18,5 +19,6 @@ class LayoutManager {
 
 export const layoutManager = new LayoutManager();
 
-layoutManager.register('organization', organization)
+// layoutManager.register('organization', organization)
+layoutManager.register('organization', organizationXMind)
 layoutManager.register('tree', tree)
