@@ -17,6 +17,8 @@ export function nodeCreator(obj: Partial<TreeNode>): TreeNode{
     lineType: "straight",
     summaryHeight: 0,
     summaryWidth: 0,
+    summaryLeft: 0,
+    summaryTop: 0,
     summary: [],
     isRoot: false,
     ...obj

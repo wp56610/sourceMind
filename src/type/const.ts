@@ -9,6 +9,15 @@ export interface TreeNode extends BaseNode{
    */
   summaryHeight: number;
   /**
+   * summary 导致的间距, 还是以盒模型为理解
+   */
+  summaryLeft: number
+
+  /**
+   * summary 导致的间距, 还是以盒模型为理解
+   */
+  summaryTop: number
+  /**
    * 布局类型
    */
   type: string;
@@ -26,6 +35,7 @@ export interface TreeNode extends BaseNode{
    */
   cLeft: number;
   cTop: number;
+
 }
 
 interface BaseNode {
