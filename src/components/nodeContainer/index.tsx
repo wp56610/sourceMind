@@ -6,7 +6,7 @@ interface NodeContainerProps {
   node: TreeNode
 }
 function NodeContainer(props: NodeContainerProps) {
-  const { contentWidth, contentHeight, top, left, text } = props.node
+  const { contentWidth, contentHeight, top, left, text, nodeId } = props.node
   // const ref = useRef<HTMLDivElement>(null)
   // useEffect(()=>{
   //   const resizeObserver = new ResizeObserver(() => {
@@ -25,7 +25,7 @@ function NodeContainer(props: NodeContainerProps) {
     top: top,
   }
 
-  return <div className="node-container" style={style}>
+  return <div className="node-container" id={nodeId} style={style}>
     {/* <div contentEditable={true}>textEditor</div> */}
     {text}
   </div>;

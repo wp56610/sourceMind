@@ -46,3 +46,6 @@ const MindMap = forwardRef((prop: {root:TreeNode}, ref: Ref<unknown> | undefined
 })
 
 export default MindMap
+
+// eslint-disable-next-line react-refresh/only-export-components
+export {layoutManager}  from './layout/layoutManager'

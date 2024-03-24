@@ -9,6 +9,8 @@ export function nodeCreator(obj: Partial<TreeNode>): TreeNode{
     contentHeight: 50,
     left: 0,
     top: 0,
+    cLeft:0,
+    cTop: 0,
     layoutWidth: 0,
     layoutHeight: 0,
     type: "organization",
@@ -16,6 +18,7 @@ export function nodeCreator(obj: Partial<TreeNode>): TreeNode{
     summaryHeight: 0,
     summaryWidth: 0,
     summary: [],
+    isRoot: false,
     ...obj
   }
   return treeNode

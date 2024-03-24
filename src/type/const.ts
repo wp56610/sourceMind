@@ -19,7 +19,13 @@ export interface TreeNode extends BaseNode{
   /**
    * 概要节点存储
    */
-  summary: RelationInfo[]
+  summary: RelationInfo[],
+  isRoot: boolean;
+  /**
+   * 计算布局中，缓存当前节点相对于以当前节点为根节点的子树的左侧起始偏移
+   */
+  cLeft: number;
+  cTop: number;
 }
 
 interface BaseNode {
