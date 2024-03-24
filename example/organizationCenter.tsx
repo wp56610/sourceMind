@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom/client'
 import MindMap from '../src/main'
 import {nodeCreator, relationCreator} from '../src/tools/nodeCreator'
+import { layoutManager } from '../src/layout/layoutManager'
+import organization from '../src/layout/organization/organization'
+layoutManager.register('organization', organization)
 const root = nodeCreator({text: '根节点', isRoot: true})
 const children1 = [
   nodeCreator({text: '分支主题', }),
