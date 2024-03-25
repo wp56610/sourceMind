@@ -1,19 +1,23 @@
-## how to use
+
+
+## 查看示例
 
 ```bash
-npm i source-mind
+npm run dev 
 ```
 
-## run dev
+example 文件夹下面的示例都可以通过， 本地访问 
 
-```bash
-vite
-```
+http://localhost:5173/
+
+http://localhost:5173/organizationCenter.html
+
+
 
 ## build
 
 ```bash
-vite build
+npm run build
 ```
 
 
