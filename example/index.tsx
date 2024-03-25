@@ -10,7 +10,7 @@ const children1 = [
   nodeCreator({text: '分支主题', }),
 ]
 root.children.push(...children1)
-const relationInfo = relationCreator({text: '分支主题', ids:[children1[0].nodeId]})
+const relationInfo = relationCreator({text: 'summary', ids:[children1[1].nodeId], contentWidth: 200})
 root.summary = [relationInfo]
 root.children[2].children.push(
   nodeCreator({text: 'test',  }),
@@ -21,6 +21,8 @@ root.children[2].children[1].children.push(
   nodeCreator({text: 'test',  }),
   nodeCreator({text: 'test',  }),
 )
+
+
 function Map(){
   const ref =  useRef()
   useEffect(()=>{
