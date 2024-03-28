@@ -103,7 +103,7 @@ class OrganizationXMind extends layoutBase {
     // 原地算法
     node.children.forEach((item) => {
       // 计算节点的左侧坐标
-      item.left = subTreeStart + item.cLeft - (node.contentWidth >> 1);
+      item.left = subTreeStart + item.cLeft - (node.contentWidth >> 1) + node.summaryLeft;
       item.top = topStart;
       subTreeStart += item.summaryWidth + this.brotherSpacing;
       nodeIdMap.set(item.nodeId, item.summaryHeight);
